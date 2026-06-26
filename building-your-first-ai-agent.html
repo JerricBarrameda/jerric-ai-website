@@ -114,6 +114,13 @@ tailwind.config = {
 <!-- Article Body -->
 <article class="px-margin-desktop pb-xl max-w-3xl mx-auto">
 <p class="prose-lead reveal">You can build a working AI agent in 2026 without writing a single framework from scratch. Using n8n&#x27;s AI Agent node with GPT-4o, you can ship a research or lead-qualification agent in an afternoon. One team built their first working agent in about two hours, roughly three times faster than writing the equivalent control logic in Python. This guide shows the no-code path I actually use with clients.</p>
+
+<!-- Featured image — replace with <img src="..." alt="..." class="w-full rounded-lg"> when ready -->
+<div class="reveal my-lg w-full flex flex-col items-center justify-center gap-xs border-2 border-dashed border-primary/20 bg-primary/5 rounded-lg" style="height:420px;">
+  <span class="material-symbols-outlined" style="font-size:3rem;color:rgba(114,215,211,0.35);">image</span>
+  <span class="text-label-sm font-label-sm uppercase tracking-widest" style="color:rgba(114,215,211,0.35);">Image coming soon</span>
+</div>
+
 <p class="prose-p reveal">There is a popular tutorial format that has you spin up a Python project, install a framework like CrewAI, wire up classes, and debug dependency errors before you ever see your agent do anything. That path is fine if you are a developer who wants full control. But if your goal is a working agent that does real business work, you do not need it. The faster path is a visual builder, and the result is something you can maintain, hand off, and actually deploy.</p>
 <h2 class="prose-h2 reveal">What is an AI agent, in plain terms?</h2>
 <p class="prose-p reveal">An AI agent is a language model wrapped with a set of tools and given the freedom to decide which tools to use to finish a task. The model does not just answer. It plans, calls a tool such as web search or a database, looks at the result, and decides the next step. In n8n this is handled by the AI Agent node, which connects an LLM like GPT-4o to tools such as web search, a calculator, email, or a custom API, and lets the model orchestrate them.</p>

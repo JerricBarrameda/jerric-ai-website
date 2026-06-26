@@ -69,16 +69,6 @@ nav a:not([class*="border-b"]):not([class*="border-primary"]):hover::after {
   width: 100%;
 }
 
-/* ─── Article hover border accent ───────────────────────────────────────── */
-article {
-  transition: border-left-color 0.3s ease, padding-left 0.3s ease;
-  border-left: 2px solid transparent;
-  padding-left: 0;
-}
-article:hover {
-  border-left-color: #72d7d3;
-  padding-left: 10px;
-}
 
 /* ─── Count-up numbers ──────────────────────────────────────────────────── */
 .count-up { display: inline-block; }

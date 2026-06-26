@@ -114,6 +114,13 @@ tailwind.config = {
 <!-- Article Body -->
 <article class="px-margin-desktop pb-xl max-w-3xl mx-auto">
 <p class="prose-lead reveal">Prompt injection is still the number one LLM security risk in 2026, sitting at the top of the OWASP Gen AI list as LLM01. Research shows about 73% of production AI deployments are vulnerable to it, and OpenAI has called it a frontier security challenge with no clean fix. If you connect a language model to your CRM, your inbox, or your database, this is the threat you have to design around.</p>
+
+<!-- Featured image — replace with <img src="..." alt="..." class="w-full rounded-lg"> when ready -->
+<div class="reveal my-lg w-full flex flex-col items-center justify-center gap-xs border-2 border-dashed border-primary/20 bg-primary/5 rounded-lg" style="height:420px;">
+  <span class="material-symbols-outlined" style="font-size:3rem;color:rgba(114,215,211,0.35);">image</span>
+  <span class="text-label-sm font-label-sm uppercase tracking-widest" style="color:rgba(114,215,211,0.35);">Image coming soon</span>
+</div>
+
 <p class="prose-p reveal">I build automations that give models access to real business tools, so I treat this as a working problem, not a theory. When an agent can read email and write to a CRM, a malicious instruction hidden in that email is no longer a curiosity. It is an attack path. Here is how it works and how I defend against it.</p>
 <h2 class="prose-h2 reveal">What is prompt injection?</h2>
 <p class="prose-p reveal">Prompt injection is when an attacker hides instructions inside content that a language model reads, tricking the model into ignoring its real task and following the attacker&#x27;s commands instead. Because models cannot reliably tell the difference between trusted instructions from you and untrusted text from a web page or an email, they treat both as something to obey.</p>
