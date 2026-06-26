@@ -115,12 +115,31 @@
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 
-  // ─── Parallax on hero images ──────────────────────────────────────────────
-  const heroImgs = document.querySelectorAll('section:first-of-type img');
-  if (heroImgs.length) {
+  // ─── Scroll-driven video parallax + 3D frame tilt ────────────────────────
+  const heroVideo      = document.getElementById('hero-video');
+  const svcVideoInner  = document.getElementById('services-video-inner');
+  const svcVideoFrame  = document.getElementById('services-video-frame');
+  const heroImgs       = document.querySelectorAll('section:first-of-type img');
+
+  if (heroVideo || svcVideoInner || heroImgs.length) {
     window.addEventListener('scroll', () => {
       const s = window.scrollY;
+
+      // Hero background: parallax at 35% of scroll speed
+      if (heroVideo) {
+        heroVideo.style.transform = `translateY(${s * 0.35}px) scale(1.15)`;
+      }
+
+      // Legacy hero images
       heroImgs.forEach(img => { img.style.transform = `translateY(${s * 0.14}px)`; });
+
+      // Services video: 3D tilt flattens as frame scrolls into view
+      if (svcVideoInner && svcVideoFrame) {
+        const rect = svcVideoFrame.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight));
+        const tiltX = 8 - progress * 8;
+        svcVideoInner.style.transform = `rotateX(${tiltX}deg)`;
+      }
     }, { passive: true });
   }
 })();

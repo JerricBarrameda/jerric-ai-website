@@ -210,11 +210,14 @@
 </div>
 </div>
 </div>
-<!-- ANIMATION_3: Interactive 3D Core Placeholder -->
-<div class="absolute inset-0 -z-10 opacity-30 flex items-center justify-center">
-<div class="w-96 h-96 border border-teal-accent/20 rounded-full animate-pulse flex items-center justify-center">
-<div class="w-64 h-64 border border-teal-accent/40 rounded-full animate-float"></div>
-</div>
+<!-- Hero video background -->
+<div class="absolute inset-0 -z-10 overflow-hidden">
+  <video id="hero-video"
+    class="absolute inset-0 w-full h-full object-cover scale-[1.15]"
+    src="network-bg.mp4"
+    autoplay muted loop playsinline preload="auto">
+  </video>
+  <div class="absolute inset-0 bg-gradient-to-b from-background/85 via-background/60 to-background/85"></div>
 </div>
 <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
 <span class="material-symbols-outlined text-on-surface-variant">keyboard_double_arrow_down</span>
