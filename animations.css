@@ -1,0 +1,93 @@
+/* ─── Scroll Reveal ─────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.from-left  { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.visible    { opacity: 1; transform: none; }
+
+/* ─── Card Hover Lift ───────────────────────────────────────────────────── */
+.glass-card, .glass-panel {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease !important;
+}
+.glass-card:hover, .glass-panel:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 24px 48px -12px rgba(26, 143, 140, 0.35) !important;
+  border-color: rgba(26, 143, 140, 0.5) !important;
+}
+
+/* ─── Button Glow Pulse ─────────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(114, 215, 211, 0.25); }
+  50%       { box-shadow: 0 0 28px rgba(114, 215, 211, 0.6); }
+}
+button.bg-primary:hover,
+button.bg-teal-accent:hover,
+a.bg-primary:hover,
+a.bg-teal-accent:hover {
+  animation: glow-pulse 1.8s ease-in-out infinite;
+  transform: translateY(-2px) !important;
+}
+button.bg-primary:active,
+button.bg-teal-accent:active {
+  transform: scale(0.96) !important;
+  animation: none;
+}
+
+/* Ripple on click */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transform: scale(0);
+  animation: ripple-anim 0.55s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+button { position: relative; overflow: hidden; }
+
+/* ─── Nav link underline slide ──────────────────────────────────────────── */
+nav a:not([class*="border-b"]):not([class*="border-primary"]) {
+  position: relative;
+}
+nav a:not([class*="border-b"]):not([class*="border-primary"])::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: #72d7d3;
+  transition: width 0.3s ease;
+}
+nav a:not([class*="border-b"]):not([class*="border-primary"]):hover::after {
+  width: 100%;
+}
+
+/* ─── Article hover border accent ───────────────────────────────────────── */
+article {
+  transition: border-left-color 0.3s ease, padding-left 0.3s ease;
+  border-left: 2px solid transparent;
+  padding-left: 0;
+}
+article:hover {
+  border-left-color: #72d7d3;
+  padding-left: 10px;
+}
+
+/* ─── Count-up numbers ──────────────────────────────────────────────────── */
+.count-up { display: inline-block; }
+
+/* ─── Stagger delay helpers (applied by JS) ─────────────────────────────── */
+.stagger-0 { transition-delay: 0.00s !important; }
+.stagger-1 { transition-delay: 0.10s !important; }
+.stagger-2 { transition-delay: 0.20s !important; }
+.stagger-3 { transition-delay: 0.30s !important; }
+.stagger-4 { transition-delay: 0.40s !important; }
+.stagger-5 { transition-delay: 0.50s !important; }
+.stagger-6 { transition-delay: 0.60s !important; }
