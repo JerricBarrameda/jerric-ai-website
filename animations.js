@@ -45,6 +45,13 @@
     }
   });
 
+  // Catch-all: observe any element that already has reveal in its HTML but
+  // wasn't picked up by the selectors above (e.g. prose-p/prose-h2 inside
+  // article pages). Calling observe() twice on the same element is safe.
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+
   // ─── Count-up for stat numbers ────────────────────────────────────────────
   function animateCount(el, target, prefix, suffix) {
     const duration = 1400;
