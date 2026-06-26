@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Build Your First AI Agent in 2026 With n8n and GPT-4o (No Code) | Jerric AI</title>
+<meta name="description" content="A step-by-step guide to building a working AI agent without writing a framework from scratch. Use n8n, Make.com, and GPT-4o to ship a research and qualification agent in an afternoon."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    "colors": {
+      "primary": "#72d7d3","on-primary": "#003736","primary-container": "#34a09c",
+      "on-primary-container": "#00302e","primary-fixed": "#8ff3ef","primary-fixed-dim": "#72d7d3",
+      "on-primary-fixed": "#00201f","on-primary-fixed-variant": "#00504e","inverse-primary": "#006a67",
+      "surface-tint": "#72d7d3","secondary": "#98d1ce","on-secondary": "#003735",
+      "secondary-container": "#104f4d","on-secondary-container": "#87bfbc",
+      "secondary-fixed": "#b4edea","secondary-fixed-dim": "#98d1ce",
+      "on-secondary-fixed": "#00201f","on-secondary-fixed-variant": "#104f4d",
+      "tertiary": "#a9cdcc","on-tertiary": "#113635","tertiary-container": "#749796",
+      "on-tertiary-container": "#092f2f","tertiary-fixed": "#c4eae8","tertiary-fixed-dim": "#a9cdcc",
+      "on-tertiary-fixed": "#002020","on-tertiary-fixed-variant": "#2a4c4c",
+      "background": "#131313","on-background": "#e5e2e1",
+      "surface": "#131313","on-surface": "#e5e2e1","surface-dim": "#131313","surface-bright": "#393939",
+      "surface-container-lowest": "#0e0e0e","surface-container-low": "#1c1b1b",
+      "surface-container": "#201f1f","surface-container-high": "#2a2a2a",
+      "surface-container-highest": "#353534","surface-variant": "#353534",
+      "on-surface-variant": "#bdc9c8","inverse-surface": "#e5e2e1","inverse-on-surface": "#313030",
+      "outline": "#879392","outline-variant": "#3d4948",
+      "error": "#ffb4ab","on-error": "#690005","error-container": "#93000a","on-error-container": "#ffdad6"
+    },
+    "spacing": {"gutter":"24px","xs":"8px","xl":"80px","margin-mobile":"16px","margin-desktop":"64px","base":"4px","sm":"16px","md":"24px","lg":"48px"},
+    "fontFamily": {"headline-xl":["Playfair Display"],"headline-lg":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"body-lg":["Inter"],"body-md":["Inter"],"label-md":["JetBrains Mono"],"label-sm":["JetBrains Mono"]},
+    "fontSize": {
+      "headline-xl":["48px",{"lineHeight":"1.1","fontWeight":"700"}],
+      "headline-lg":["36px",{"lineHeight":"1.2","fontWeight":"600"}],
+      "headline-md":["24px",{"lineHeight":"1.3","fontWeight":"600"}],
+      "body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}],
+      "body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],
+      "label-md":["14px",{"lineHeight":"1.4","letterSpacing":"0.05em","fontWeight":"500"}],
+      "label-sm":["12px",{"lineHeight":"1.4","letterSpacing":"0.08em","fontWeight":"500"}]
+    }
+  }}
+}
+</script>
+<style>
+.glass-panel{background:rgba(26,143,140,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#131313;}::-webkit-scrollbar-thumb{background:#72d7d3;border-radius:10px;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+.prose-lead{font-size:1.15rem;line-height:1.75;color:#bdc9c8;font-weight:500;border-left:3px solid #72d7d3;padding-left:1.25rem;margin:2rem 0;}
+.prose-h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:#e5e2e1;margin:2.75rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.prose-h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:#72d7d3;margin:2rem 0 0.75rem;}
+.prose-p{font-size:1.05rem;line-height:1.8;color:#bdc9c8;margin:1.25rem 0;}
+.prose-p strong{color:#e5e2e1;}
+.prose-ul{margin:1.25rem 0 1.25rem 1rem;space-y:0.5rem;}
+.prose-ul li{position:relative;padding-left:1.5rem;color:#bdc9c8;line-height:1.7;margin-bottom:0.5rem;}
+.prose-ul li::before{content:'';position:absolute;left:0;top:0.65em;width:6px;height:6px;background:#72d7d3;border-radius:50%;}
+.prose-ul li strong{color:#e5e2e1;}
+.prose-ol{margin:1.25rem 0 1.25rem 1.5rem;counter-reset:item;}
+.prose-ol li{position:relative;padding-left:0.5rem;color:#bdc9c8;line-height:1.7;margin-bottom:0.75rem;counter-increment:item;list-style-type:decimal;}
+.prose-ol li::marker{color:#72d7d3;font-family:'JetBrains Mono',monospace;font-size:0.9em;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);}
+.faq-item.open .faq-answer{max-height:400px;}
+.faq-icon{transition:transform 0.3s ease;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+</style>
+<link rel="stylesheet" href="animations.css"/>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-margin-desktop py-md max-w-[1440px] mx-auto">
+<a class="text-headline-md font-headline-md text-primary tracking-tight" href="index.html">Jerric AI</a>
+<div class="hidden md:flex items-center space-x-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="services.html">Services</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md font-label-md" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="youtube.html">YouTube</a>
+</div>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95">Consultation</button>
+</div>
+</nav>
+<main class="relative z-10 pt-xl">
+
+<!-- Article Header -->
+<header class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="max-w-3xl mx-auto">
+<a href="blog.html" class="inline-flex items-center gap-xs text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors mb-lg">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Back to Blog
+</a>
+<div class="flex items-center gap-md mb-md">
+<span class="text-label-sm font-label-sm text-tertiary uppercase tracking-widest px-sm py-base border border-tertiary/30 bg-tertiary/5">YouTube</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm">4 JUN 2026</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm">· 5 min read</span>
+</div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface leading-tight mb-md reveal">Building Your First AI Agent in 2026 (No Python Required)</h1>
+<div class="flex items-center gap-sm pt-md border-t border-white/5">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface">Jerric Barrameda</span>
+<span class="text-on-surface-variant text-label-sm">· Jerric AI</span>
+</div>
+</div>
+</header>
+
+<!-- Divider -->
+<div class="px-margin-desktop max-w-3xl mx-auto">
+<div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-xl"></div>
+</div>
+
+<!-- Article Body -->
+<article class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<p class="prose-lead reveal">You can build a working AI agent in 2026 without writing a single framework from scratch. Using n8n&#x27;s AI Agent node with GPT-4o, you can ship a research or lead-qualification agent in an afternoon. One team built their first working agent in about two hours, roughly three times faster than writing the equivalent control logic in Python. This guide shows the no-code path I actually use with clients.</p>
+<p class="prose-p reveal">There is a popular tutorial format that has you spin up a Python project, install a framework like CrewAI, wire up classes, and debug dependency errors before you ever see your agent do anything. That path is fine if you are a developer who wants full control. But if your goal is a working agent that does real business work, you do not need it. The faster path is a visual builder, and the result is something you can maintain, hand off, and actually deploy.</p>
+<h2 class="prose-h2 reveal">What is an AI agent, in plain terms?</h2>
+<p class="prose-p reveal">An AI agent is a language model wrapped with a set of tools and given the freedom to decide which tools to use to finish a task. The model does not just answer. It plans, calls a tool such as web search or a database, looks at the result, and decides the next step. In n8n this is handled by the AI Agent node, which connects an LLM like GPT-4o to tools such as web search, a calculator, email, or a custom API, and lets the model orchestrate them.</p>
+<p class="prose-p reveal">The difference from a normal automation is who decides the steps. In a normal workflow, you script every branch. In an agent, you hand the model a goal and a toolbox, and it works out the path. That is what makes it feel autonomous.</p>
+<h2 class="prose-h2 reveal">Why build an agent with no-code instead of a Python framework?</h2>
+<p class="prose-p reveal">You build with no-code because it is faster to ship and easier to maintain, and most business agents do not need the control a code framework gives you. The visual approach trades some fine-grained control for speed, and for the agents most businesses want, that is the right trade. A team using n8n stood up its first workflow in about two hours, roughly three times faster than coding the same controls by hand.</p>
+<p class="prose-p reveal">The cost is low too. A research agent running 5 to 10 searches per task typically costs $0.05 to $0.20 per execution with GPT-4o. The only time you reach for code is a single small step, like a custom JavaScript snippet inside the workflow, and even that is optional for most agents.</p>
+<p class="prose-p reveal">To be clear, code frameworks are not bad. If you need deep custom control, they earn their place. But &quot;build your first agent&quot; should not mean &quot;first debug a Python environment.&quot; Start where you can see results today.</p>
+<h2 class="prose-h2 reveal">What will you build in this guide?</h2>
+<p class="prose-p reveal">We will build a lead-qualification agent, because it is genuinely useful and it touches every core agent concept. The agent will:</p>
+<ol class="prose-ol">
+<li>Receive a new lead from a form, Instagram, WhatsApp, or a website chat.</li>
+<li>Use GPT-4o to ask a few qualifying questions and interpret the answers.</li>
+<li>Search or enrich the lead&#x27;s details where it can.</li>
+<li>Decide whether the lead is qualified and tag it accordingly.</li>
+<li>Log everything to a CRM and trigger a follow-up sequence.</li>
+</ol>
+<p class="prose-p reveal">This is the same shape as the VAPI voice agent I built that qualifies leads, handles objections, and books discovery calls, fully integrated with Make.com for logging and follow-up. Once you understand this pattern, you can rebuild it as a chatbot, a voice agent, or a research tool.</p>
+<h2 class="prose-h2 reveal">Step by step: building the agent in n8n</h2>
+<h3 class="prose-h3 reveal">Step 1: Set up the trigger</h3>
+<p class="prose-p reveal">Start with the event that kicks off the agent. Add a trigger node for your lead source, such as a webhook from your website form or a chat channel. This is the front door. Every message that arrives here wakes the agent.</p>
+<h3 class="prose-h3 reveal">Step 2: Add the AI Agent node and connect GPT-4o</h3>
+<p class="prose-p reveal">Drop in n8n&#x27;s AI Agent node and connect it to GPT-4o as the model. In the system prompt, give the agent its job: you qualify incoming leads for a service business, ask up to three questions, and decide if the lead is a fit. Keep instructions tight and specific, because a clear role is what keeps an agent on task.</p>
+<h3 class="prose-h3 reveal">Step 3: Give the agent its tools</h3>
+<p class="prose-p reveal">Attach the tools the agent is allowed to use. For this build that is a memory node so it remembers the conversation across turns, and a connection to your CRM such as Airtable or HubSpot so it can read and write lead records. Tools are what turn a chatbot into an agent. Without them the model can only talk. With them it can act.</p>
+<h3 class="prose-h3 reveal">Step 4: Add decision logic and tagging</h3>
+<p class="prose-p reveal">Have the agent classify the lead as qualified or not, and route accordingly. Qualified leads get tagged and pushed into the CRM. Unqualified ones get a polite response and a note. This is where you keep the human safety rail: anything irreversible, like booking a paid call, can pause for a quick human confirmation.</p>
+<h3 class="prose-h3 reveal">Step 5: Connect the follow-up</h3>
+<p class="prose-p reveal">Wire the qualified leads into a follow-up sequence in Make.com so the agent&#x27;s work continues automatically on a 30, 60, and 90 day schedule. Now the lead is not just captured, it is nurtured without anyone touching it.</p>
+<h3 class="prose-h3 reveal">Step 6: Test on real data before you trust it</h3>
+<p class="prose-p reveal">Run real sample leads through the agent and watch what it does at each step. Check that it tags correctly, writes clean CRM records, and never takes an action you did not intend. Only after it behaves on real inputs should you set it live. Testing before trust is the single habit that separates agents that work from agents that embarrass you.</p>
+<h2 class="prose-h2 reveal">How do you know your agent is ready to deploy?</h2>
+<p class="prose-p reveal">It is ready when it handles your real inputs the same way a careful human would, every time, on a workflow with a clear pass-or-fail test. Scope it to one job, give that job a binary success measure, and confirm it before going live. Resist the urge to make one agent do five things. A focused agent is reliable. A sprawling one is a debugging nightmare.</p>
+<h2 class="prose-h2 reveal">What should you do next?</h2>
+<p class="prose-p reveal">Pick one repetitive task you do by hand, like qualifying leads or triaging messages, and build the smallest agent that handles it end to end. Use n8n or Make.com, connect GPT-4o, give it one or two tools, and test it on real data. You will have something working before the afternoon is over, and you will understand agents better from one real build than from ten tutorials.</p>
+<p class="prose-p reveal">You do not need a framework to start. You need a goal, a model, and a couple of tools.</p>
+</article>
+
+
+
+<!-- CTA -->
+<section class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<div class="glass-panel rounded-xl p-lg text-center reveal">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-sm">Want systems like this for your business?</h3>
+<p class="text-on-surface-variant text-body-md mb-md">Book a discovery call and let's build your first AI automation together.</p>
+<a href="services.html" class="inline-flex items-center gap-xs bg-primary text-on-primary px-lg py-sm font-label-md hover:opacity-90 transition-all rounded-lg">
+Book a Consultation <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</section>
+
+</main>
+<footer class="mt-xl bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<div class="flex flex-col items-center md:items-start space-y-base">
+<div class="text-headline-md font-headline-md text-primary">Jerric AI</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2026 Jerric AI. All rights reserved.</p>
+</div>
+<div class="flex items-center space-x-md mt-lg md:mt-0">
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="services.html">Services</a>
+<a class="text-primary text-label-sm font-label-sm transition-colors" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="youtube.html">YouTube</a>
+</div>
+</div>
+</footer>
+<script src="animations.js"></script>
+<script>
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

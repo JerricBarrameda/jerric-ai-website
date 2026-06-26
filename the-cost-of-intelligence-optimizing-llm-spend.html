@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Cut LLM Costs in 2026: Caching, Routing, and Batching | Jerric AI</title>
+<meta name="description" content="Scaling AI is a fiscal problem as much as a technical one. A practical 2026 guide to cutting your GPT-4o and API bills with model routing, prompt caching, and batch processing."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    "colors": {
+      "primary": "#72d7d3","on-primary": "#003736","primary-container": "#34a09c",
+      "on-primary-container": "#00302e","primary-fixed": "#8ff3ef","primary-fixed-dim": "#72d7d3",
+      "on-primary-fixed": "#00201f","on-primary-fixed-variant": "#00504e","inverse-primary": "#006a67",
+      "surface-tint": "#72d7d3","secondary": "#98d1ce","on-secondary": "#003735",
+      "secondary-container": "#104f4d","on-secondary-container": "#87bfbc",
+      "secondary-fixed": "#b4edea","secondary-fixed-dim": "#98d1ce",
+      "on-secondary-fixed": "#00201f","on-secondary-fixed-variant": "#104f4d",
+      "tertiary": "#a9cdcc","on-tertiary": "#113635","tertiary-container": "#749796",
+      "on-tertiary-container": "#092f2f","tertiary-fixed": "#c4eae8","tertiary-fixed-dim": "#a9cdcc",
+      "on-tertiary-fixed": "#002020","on-tertiary-fixed-variant": "#2a4c4c",
+      "background": "#131313","on-background": "#e5e2e1",
+      "surface": "#131313","on-surface": "#e5e2e1","surface-dim": "#131313","surface-bright": "#393939",
+      "surface-container-lowest": "#0e0e0e","surface-container-low": "#1c1b1b",
+      "surface-container": "#201f1f","surface-container-high": "#2a2a2a",
+      "surface-container-highest": "#353534","surface-variant": "#353534",
+      "on-surface-variant": "#bdc9c8","inverse-surface": "#e5e2e1","inverse-on-surface": "#313030",
+      "outline": "#879392","outline-variant": "#3d4948",
+      "error": "#ffb4ab","on-error": "#690005","error-container": "#93000a","on-error-container": "#ffdad6"
+    },
+    "spacing": {"gutter":"24px","xs":"8px","xl":"80px","margin-mobile":"16px","margin-desktop":"64px","base":"4px","sm":"16px","md":"24px","lg":"48px"},
+    "fontFamily": {"headline-xl":["Playfair Display"],"headline-lg":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"body-lg":["Inter"],"body-md":["Inter"],"label-md":["JetBrains Mono"],"label-sm":["JetBrains Mono"]},
+    "fontSize": {
+      "headline-xl":["48px",{"lineHeight":"1.1","fontWeight":"700"}],
+      "headline-lg":["36px",{"lineHeight":"1.2","fontWeight":"600"}],
+      "headline-md":["24px",{"lineHeight":"1.3","fontWeight":"600"}],
+      "body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}],
+      "body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],
+      "label-md":["14px",{"lineHeight":"1.4","letterSpacing":"0.05em","fontWeight":"500"}],
+      "label-sm":["12px",{"lineHeight":"1.4","letterSpacing":"0.08em","fontWeight":"500"}]
+    }
+  }}
+}
+</script>
+<style>
+.glass-panel{background:rgba(26,143,140,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#131313;}::-webkit-scrollbar-thumb{background:#72d7d3;border-radius:10px;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+.prose-lead{font-size:1.15rem;line-height:1.75;color:#bdc9c8;font-weight:500;border-left:3px solid #72d7d3;padding-left:1.25rem;margin:2rem 0;}
+.prose-h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:#e5e2e1;margin:2.75rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.prose-h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:#72d7d3;margin:2rem 0 0.75rem;}
+.prose-p{font-size:1.05rem;line-height:1.8;color:#bdc9c8;margin:1.25rem 0;}
+.prose-p strong{color:#e5e2e1;}
+.prose-ul{margin:1.25rem 0 1.25rem 1rem;space-y:0.5rem;}
+.prose-ul li{position:relative;padding-left:1.5rem;color:#bdc9c8;line-height:1.7;margin-bottom:0.5rem;}
+.prose-ul li::before{content:'';position:absolute;left:0;top:0.65em;width:6px;height:6px;background:#72d7d3;border-radius:50%;}
+.prose-ul li strong{color:#e5e2e1;}
+.prose-ol{margin:1.25rem 0 1.25rem 1.5rem;counter-reset:item;}
+.prose-ol li{position:relative;padding-left:0.5rem;color:#bdc9c8;line-height:1.7;margin-bottom:0.75rem;counter-increment:item;list-style-type:decimal;}
+.prose-ol li::marker{color:#72d7d3;font-family:'JetBrains Mono',monospace;font-size:0.9em;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);}
+.faq-item.open .faq-answer{max-height:400px;}
+.faq-icon{transition:transform 0.3s ease;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+</style>
+<link rel="stylesheet" href="animations.css"/>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-margin-desktop py-md max-w-[1440px] mx-auto">
+<a class="text-headline-md font-headline-md text-primary tracking-tight" href="index.html">Jerric AI</a>
+<div class="hidden md:flex items-center space-x-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="services.html">Services</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md font-label-md" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="youtube.html">YouTube</a>
+</div>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95">Consultation</button>
+</div>
+</nav>
+<main class="relative z-10 pt-xl">
+
+<!-- Article Header -->
+<header class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="max-w-3xl mx-auto">
+<a href="blog.html" class="inline-flex items-center gap-xs text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors mb-lg">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Back to Blog
+</a>
+<div class="flex items-center gap-md mb-md">
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-widest px-sm py-base border border-primary/30 bg-primary/5">AI Strategy</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm">12 JUN 2026</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm">· 4 min read</span>
+</div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface leading-tight mb-md reveal">The Cost of Intelligence: Optimizing LLM Spend in 2026</h1>
+<div class="flex items-center gap-sm pt-md border-t border-white/5">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface">Jerric Barrameda</span>
+<span class="text-on-surface-variant text-label-sm">· Jerric AI</span>
+</div>
+</div>
+</header>
+
+<!-- Divider -->
+<div class="px-margin-desktop max-w-3xl mx-auto">
+<div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-xl"></div>
+</div>
+
+<!-- Article Body -->
+<article class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<p class="prose-lead reveal">You can cut most AI API bills by 50% to 70% in 2026 using three levers: prompt caching, model routing, and batch processing. Combined, these techniques reduce total inference cost by 5 to 10 times. The catch is that most teams never set them up, so they pay full price on every call when the same result was available for a fraction.</p>
+<p class="prose-p reveal">I run automations that call models thousands of times a month for clients, so the bill is my problem, not an abstraction. Scaling AI is not only a technical challenge. It is a fiscal one. When a workflow runs on every email or every lead, a few cents per call adds up fast, and the difference between a smart setup and a lazy one is the difference between a viable product and a money pit.</p>
+<h2 class="prose-h2 reveal">Why is LLM cost optimization a bigger deal in 2026?</h2>
+<p class="prose-p reveal">It matters more because usage scaled up while per-token prices fell, and the two pull in opposite directions. Prices collapsed: GPT-4&#x27;s API launched in 2023 at $30 per million input tokens, and by 2026 Gemini 3.1 Flash runs around $0.10 per million input tokens, roughly a 99.7% drop in three years. But cheaper tokens invite heavier use. Teams now run models on every row, every message, every lead, so total spend climbs even as unit price falls.</p>
+<p class="prose-p reveal">The result is a bill that surprises people. GPT-4o in 2026 sits at about $2.50 per million input tokens and $10.00 per million output tokens, with output costing roughly 4 times input. When you are sending the same long system prompt on every call and paying for premium output you do not need, waste compounds quietly.</p>
+<h2 class="prose-h2 reveal">What is the single biggest lever to cut LLM cost?</h2>
+<p class="prose-p reveal">Model routing is the biggest lever. Routing means sending each request to the cheapest model that can handle it, instead of sending everything to your most expensive model by default. Simple tasks go to a small, cheap model, and only the hard requests escalate to a premium one. This alone can cut spend by 60% to 90% without hurting quality for most users.</p>
+<p class="prose-p reveal">Here is the mistake I see constantly. A team builds a workflow on GPT-4o because it is capable, then routes every task to it, including classification, tagging, and short summaries that a much smaller model handles perfectly. They are paying premium rates for kindergarten work. Set up a router that checks complexity first, and the bill drops immediately.</p>
+<h2 class="prose-h2 reveal">How does prompt caching reduce cost?</h2>
+<p class="prose-p reveal">Prompt caching stores the static parts of your prompt so you do not pay to process them again on every call. Most workflows send the same system prompt, the same instructions, and the same context block thousands of times. Caching lets the provider reuse that work. OpenAI&#x27;s recent models offer up to 90% savings on cached reads, and Anthropic charges roughly 10% of the base input price for a cache hit.</p>
+<p class="prose-p reveal">For an automation that fires the same instruction on every incoming message, caching is close to free money. The static instructions get cached once, and you only pay full price for the small piece that actually changes, which is the customer&#x27;s message.</p>
+<h2 class="prose-h2 reveal">When should you use batch processing?</h2>
+<p class="prose-p reveal">Use batch processing whenever the work is not time-sensitive. Batch endpoints run your requests at roughly 50% of real-time token cost in exchange for slower turnaround. If you are generating a hundred social posts overnight, enriching a list of scraped leads, or summarizing yesterday&#x27;s emails, none of that needs to happen in real time. Send it to the batch endpoint and pay half.</p>
+<p class="prose-p reveal">The rule of thumb: if a human is waiting for the answer, run it live. If a workflow processes a backlog on a schedule, batch it.</p>
+<h2 class="prose-h2 reveal">What does an optimized setup actually look like?</h2>
+<p class="prose-p reveal">Here is how I structure a high-volume workflow for cost:</p>
+<ol class="prose-ol">
+<li><strong>Route by complexity.</strong> A cheap model classifies and tags. A premium model only runs on the requests that genuinely need reasoning.</li>
+<li><strong>Cache the static prompt.</strong> The system instructions and any fixed context are cached so I pay for them once, not once per call.</li>
+<li><strong>Batch the non-urgent work.</strong> Content generation, enrichment, and reporting run on the batch endpoint overnight.</li>
+<li><strong>Trim the prompt.</strong> Shorter prompts cost less. I cut filler instructions and trim context to what the task needs.</li>
+</ol>
+<p class="prose-p reveal">Stacked together, these are how teams hit the 50% to 70% reductions the data describes, and in heavy pipelines the 5 to 10 times figure is real.</p>
+<h2 class="prose-h2 reveal">Should you just wait for prices to keep dropping?</h2>
+<p class="prose-p reveal">No. Prices will keep falling, but waiting is not a strategy because your usage grows alongside the price drop. The teams that win are not the ones with the cheapest model. They are the ones who match each task to the right model, cache what repeats, and batch what can wait. Those habits keep paying off no matter what the per-token price does next year.</p>
+<h2 class="prose-h2 reveal">What should you do next?</h2>
+<p class="prose-p reveal">Pull your last AI bill and find your highest-volume workflow. Ask three questions: am I using a premium model for simple tasks, am I re-sending the same prompt without caching, and is any of this work running live when it could batch. Fixing those three on a single workflow usually cuts its cost in half within an hour of work.</p>
+<p class="prose-p reveal">Intelligence is cheap in 2026. Wasting it is the expensive part.</p>
+</article>
+
+
+
+<!-- CTA -->
+<section class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<div class="glass-panel rounded-xl p-lg text-center reveal">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-sm">Want systems like this for your business?</h3>
+<p class="text-on-surface-variant text-body-md mb-md">Book a discovery call and let's build your first AI automation together.</p>
+<a href="services.html" class="inline-flex items-center gap-xs bg-primary text-on-primary px-lg py-sm font-label-md hover:opacity-90 transition-all rounded-lg">
+Book a Consultation <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</section>
+
+</main>
+<footer class="mt-xl bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<div class="flex flex-col items-center md:items-start space-y-base">
+<div class="text-headline-md font-headline-md text-primary">Jerric AI</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2026 Jerric AI. All rights reserved.</p>
+</div>
+<div class="flex items-center space-x-md mt-lg md:mt-0">
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="services.html">Services</a>
+<a class="text-primary text-label-sm font-label-sm transition-colors" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="youtube.html">YouTube</a>
+</div>
+</div>
+</footer>
+<script src="animations.js"></script>
+<script>
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
