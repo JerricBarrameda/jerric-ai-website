@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services | Jerric AI - Smart AI Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#e7c092",
+                    "primary-fixed": "#8ff3ef",
+                    "outline-variant": "#3d4948",
+                    "tertiary-fixed": "#ffdbcc",
+                    "surface-container": "#04203b",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#1e3652",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#432c0a",
+                    "surface-dim": "#00142a",
+                    "secondary-fixed-dim": "#e7c092",
+                    "surface-container-low": "#001c37",
+                    "teal-accent": "#1A8F8C",
+                    "on-primary-container": "#00302e",
+                    "surface-bright": "#233a56",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-surface-variant": "#bdc9c8",
+                    "primary": "#72d7d3",
+                    "gold-detail": "#B8956A",
+                    "on-secondary-container": "#d7b285",
+                    "primary-fixed-dim": "#72d7d3",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary": "#571f00",
+                    "inverse-surface": "#d2e4ff",
+                    "on-primary": "#003736",
+                    "surface-variant": "#1e3652",
+                    "surface-container-high": "#122b46",
+                    "on-tertiary-container": "#4c1a00",
+                    "surface-cream": "#F5F0E6",
+                    "deep-navy": "#0A2540",
+                    "on-primary-fixed-variant": "#00504e",
+                    "on-tertiary-fixed-variant": "#743413",
+                    "background": "#00142a",
+                    "on-surface": "#d2e4ff",
+                    "tertiary-container": "#ce7c54",
+                    "on-primary-fixed": "#00201f",
+                    "on-background": "#d2e4ff",
+                    "on-error": "#690005",
+                    "tertiary": "#ffb695",
+                    "outline": "#879392",
+                    "inverse-on-surface": "#19324d",
+                    "secondary-container": "#5f4420",
+                    "inverse-primary": "#006a67",
+                    "secondary-fixed": "#ffddb6",
+                    "on-secondary-fixed": "#2a1800",
+                    "primary-container": "#34a09c",
+                    "surface-tint": "#72d7d3",
+                    "on-secondary-fixed-variant": "#5c421e",
+                    "error-container": "#93000a",
+                    "surface-container-lowest": "#000f21",
+                    "surface": "#00142a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "80px",
+                    "base": "8px",
+                    "max-width": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Playfair Display"],
+                    "body-lg": ["DM Sans"],
+                    "headline-xl-mobile": ["Playfair Display"],
+                    "label-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "headline-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["DM Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #00142a;
+            color: #d2e4ff;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 54, 82, 0.3);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(26, 143, 140, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(26, 143, 140, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(26, 143, 140, 0.2);
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(26, 143, 140, 0.4);
+        }
+        .workflow-arrow::after {
+            content: 'arrow_downward';
+            font-family: 'Material Symbols Outlined';
+            display: block;
+            text-align: center;
+            color: rgba(26, 143, 140, 0.5);
+            margin: 8px 0;
+        }
+        .timeline-step {
+            position: relative;
+        }
+        .timeline-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            bottom: -20px;
+            width: 1px;
+            background: rgba(26, 143, 140, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md shadow-sm shadow-teal-accent/5 border-b border-outline-variant/20 h-20">
+<div class="max-w-max-width mx-auto px-margin-desktop flex justify-between items-center h-full">
+<div class="font-headline-md text-headline-md font-bold text-teal-accent dark:text-primary">
+            Jerric AI
+        </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-teal-accent dark:text-primary font-bold border-b-2 border-teal-accent" href="services.html">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="blog.html">Blog</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="youtube.html">YouTube</a>
+</nav>
+<button class="bg-teal-accent text-white px-6 py-2.5 rounded-lg font-label-md hover:shadow-[0_0_15px_rgba(26,143,140,0.5)] transition-all active:scale-95">
+            Consultation
+        </button>
+</div>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-max-width mx-auto px-margin-desktop mb-24 relative text-center">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-accent/5 rounded-full blur-[120px] -z-10"></div>
+<div class="max-w-4xl mx-auto">
+<span class="font-label-sm text-label-sm text-gold-detail tracking-widest mb-4 block uppercase">Our Expertise</span>
+<h1 class="font-headline-xl text-headline-xl mb-6 text-on-surface">Smart Solutions for <span class="text-teal-accent glow-text">Busy Businesses</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">Whether you need a fully automated workflow or hands-on assistant support — we've got you covered with precision-engineered AI systems.</p>
+</div>
+</section>
+<!-- Featured Service Section -->
+<section class="max-w-max-width mx-auto px-margin-desktop mb-32">
+<div class="glass-card rounded-2xl p-8 lg:p-12 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-gold-detail/20 text-gold-detail px-4 py-1.5 rounded-full text-label-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">star</span> FEATURED SERVICE
+                </span>
+</div>
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="w-14 h-14 bg-teal-accent/10 rounded-xl flex items-center justify-center mb-6 border border-teal-accent/20">
+<span class="material-symbols-outlined text-teal-accent text-3xl">auto_fix_high</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-6 text-on-surface">Content Generator AI Automation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                        Never stare at a blank screen again. Our Content Generator automation creates blog posts, social captions, email newsletters, and product descriptions — all on autopilot, in your brand voice.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 font-label-md text-on-surface">
+<span class="material-symbols-outlined text-teal-accent">check_circle</span> Automated blog &amp; social post creation
+                        </li>
+<li class="flex items-center gap-3 font-label-md text-on-surface">
+<span class="material-symbols-outlined text-teal-accent">check_circle</span> Brand voice &amp; tone customization
+                        </li>
+<li class="flex items-center gap-3 font-label-md text-on-surface">
+<span class="material-symbols-outlined text-teal-accent">check_circle</span> Multi-platform output (LinkedIn, Instagram, Email)
+                        </li>
+<li class="flex items-center gap-3 font-label-md text-on-surface">
+<span class="material-symbols-outlined text-teal-accent">check_circle</span> Integrates with Google Docs, Notion &amp; more
+                        </li>
+</ul>
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant font-label-md">From</span>
+<span class="text-3xl font-bold text-teal-accent">$250</span>
+<span class="text-on-surface-variant font-label-sm">one-time setup</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-8 rounded-xl border border-outline-variant/20">
+<div class="text-center mb-6">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-tighter">Content Generator Running...</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-container-high p-4 rounded border border-teal-accent/30 text-center">
+<span class="font-label-md text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-lg">database</span> Trigger: New Topic Added
+                            </span>
+</div>
+<div class="workflow-arrow"></div>
+<div class="bg-surface-container-high p-4 rounded border border-teal-accent/30 text-center">
+<span class="font-label-md text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-lg">psychology</span> AI Writes Drafts
+                            </span>
+</div>
+<div class="workflow-arrow"></div>
+<div class="bg-teal-accent/20 p-4 rounded border border-teal-accent text-center shadow-[0_0_15px_rgba(26,143,140,0.2)]">
+<span class="font-label-md text-white flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">publish</span> Content Published Automatically
+                            </span>
+</div>
+<div class="workflow-arrow"></div>
+<div class="bg-surface-container-high p-4 rounded border border-teal-accent/30 text-center">
+<span class="font-label-md text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-lg">schedule</span> Social Posts Scheduled
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Categories Grid -->
+<section class="max-w-max-width mx-auto px-margin-desktop mb-32">
+<h2 class="font-headline-md text-headline-md mb-12 text-on-surface">Comprehensive AI Services</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Email Sorter -->
+<div class="glass-card p-8 rounded-xl flex flex-col group">
+<div class="w-12 h-12 bg-teal-accent/10 rounded flex items-center justify-center mb-6 border border-teal-accent/20 group-hover:bg-teal-accent/20 transition-colors">
+<span class="material-symbols-outlined text-teal-accent">mail</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">Email Sorter &amp; Responder</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Automatically classify incoming mail and draft AI-powered responses based on your historical tone.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">Starting at $250</span>
+</div>
+</div>
+<!-- Lead Gen -->
+<div class="glass-card p-8 rounded-xl flex flex-col group">
+<div class="w-12 h-12 bg-secondary/10 rounded flex items-center justify-center mb-6 border border-secondary/20 group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary">group_add</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">Lead Generation System</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Automated prospecting and outreach sequences that find and engage your ideal customers 24/7.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">Starting at $300</span>
+</div>
+</div>
+<!-- Custom Workflow -->
+<div class="glass-card p-8 rounded-xl flex flex-col group">
+<div class="w-12 h-12 bg-gold-detail/10 rounded flex items-center justify-center mb-6 border border-gold-detail/20 group-hover:bg-gold-detail/20 transition-colors">
+<span class="material-symbols-outlined text-gold-detail">hub</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">Custom Workflow Automations</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Tailor-made integrations between your favorite tools to eliminate manual data entry and repetitive tasks.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">Custom Quote</span>
+</div>
+</div>
+<!-- AI Chatbot -->
+<div class="glass-card p-8 rounded-xl flex flex-col group">
+<div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">chat</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">AI Chatbot</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Customer-facing bots trained on your business data to provide instant support and capture leads on your site.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">Consultation Required</span>
+</div>
+</div>
+<!-- AI Voice Agent -->
+<div class="glass-card p-8 rounded-xl flex flex-col group">
+<div class="w-12 h-12 bg-teal-accent/10 rounded flex items-center justify-center mb-6 border border-teal-accent/20 group-hover:bg-teal-accent/20 transition-colors">
+<span class="material-symbols-outlined text-teal-accent">record_voice_over</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">AI Voice Agent</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Automated inbound and outbound voice calls with natural-sounding AI to handle scheduling and FAQs.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">Custom Quote</span>
+</div>
+</div>
+<!-- Executive VA -->
+<div class="glass-card p-8 rounded-xl flex flex-col group border-secondary/30">
+<div class="w-12 h-12 bg-secondary/10 rounded flex items-center justify-center mb-6 border border-secondary/20 group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary">support_agent</span>
+</div>
+<h3 class="font-label-md text-lg mb-2 text-on-surface">Executive Virtual Assistant</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">Human-in-the-loop support for tasks that require high-level intuition and complex decision making.</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<span class="text-teal-accent font-bold">$10/hr</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Workflow Section -->
+<section class="bg-surface-container-low py-32 mb-32 overflow-hidden">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-8 text-on-surface">The 11-Day <br/><span class="text-teal-accent">Build Timeline</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12">
+                        We move fast. From our initial conversation to a live, automated system, we focus on delivery and immediate impact for your business operations.
+                    </p>
+<div class="space-y-10">
+<div class="timeline-step flex gap-6">
+<div class="w-10 h-10 rounded-full border border-teal-accent flex items-center justify-center shrink-0 bg-background z-10">
+<span class="font-label-md text-teal-accent">01</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface font-bold uppercase mb-1">Day 1: Discovery</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Identifying pain points and high-ROI automation opportunities.</p>
+</div>
+</div>
+<div class="timeline-step flex gap-6">
+<div class="w-10 h-10 rounded-full border border-teal-accent flex items-center justify-center shrink-0 bg-background z-10">
+<span class="font-label-md text-teal-accent">02</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface font-bold uppercase mb-1">Day 2-3: Custom Plan</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Architecture design and tool selection for your specific needs.</p>
+</div>
+</div>
+<div class="timeline-step flex gap-6">
+<div class="w-10 h-10 rounded-full border border-teal-accent flex items-center justify-center shrink-0 bg-background z-10">
+<span class="font-label-md text-teal-accent">03</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface font-bold uppercase mb-1">Day 4-10: Build &amp; Test</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Technical implementation, API connections, and rigorous stress testing.</p>
+</div>
+</div>
+<div class="timeline-step flex gap-6">
+<div class="w-10 h-10 rounded-full bg-teal-accent flex items-center justify-center shrink-0 z-10">
+<span class="font-label-md text-background font-bold">11</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface font-bold uppercase mb-1">Day 11: Go Live</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Final handover, training session, and system activation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-teal-accent/10 blur-3xl rounded-full"></div>
+<div class="relative glass-card p-8 rounded-2xl border-teal-accent/20">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-3 h-3 rounded-full bg-teal-accent animate-pulse"></div>
+<span class="font-label-sm text-teal-accent uppercase tracking-widest">Available for New Clients</span>
+</div>
+<h3 class="font-headline-md text-white mb-6">"Stop drowning in repetitive tasks and start growing your business."</h3>
+<p class="font-body-md text-on-surface-variant mb-8 italic">"We don't just provide software; we provide the time you need to focus on what actually moves the needle."</p>
+<button class="w-full bg-teal-accent text-white py-4 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(26,143,140,0.4)] transition-all">Book Discovery Call</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-max-width mx-auto px-margin-desktop mb-32 text-center">
+<div class="bg-gradient-to-br from-teal-accent to-deep-navy rounded-2xl p-16 relative overflow-hidden group">
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg text-white mb-6">Ready to Automate Your Success?</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-2xl mx-auto">Join the forward-thinking businesses using Jerric AI to reclaim 30+ hours per week through intelligent automation.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-teal-accent px-10 py-4 rounded-lg font-label-md font-bold hover:bg-surface-cream transition-colors">Start Consultation</button>
+<button class="border border-white/30 text-white px-10 py-4 rounded-lg font-label-md font-bold hover:bg-white/10 transition-colors">View Case Studies</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-lowest dark:bg-surface-container-lowest bg-surface-dim border-t border-outline-variant/10">
+<div class="max-w-max-width mx-auto px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col gap-4">
+<div class="font-headline-sm text-headline-sm font-bold text-surface-cream">Jerric AI</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Jerric AI. Precision automation for the generative era.</p>
+</div>
+<div>
+<h4 class="font-label-md text-teal-accent dark:text-primary mb-6 uppercase tracking-wider">Services</h4>
+<nav class="flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Email Sorter</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Content Gen</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Executive VA</a>
+</nav>
+</div>
+<div>
+<h4 class="font-label-md text-teal-accent dark:text-primary mb-6 uppercase tracking-wider">Resources</h4>
+<nav class="flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="blog.html">Blog</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="youtube.html">YouTube</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div>
+<h4 class="font-label-md text-teal-accent dark:text-primary mb-6 uppercase tracking-wider">Contact</h4>
+<address class="not-italic flex flex-col gap-3">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Austin, Texas, USA</p>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="mailto:hello@jerric.ai">hello@jerric.ai</a>
+</address>
+</div>
+</div>
+</footer>
+<script>
+    // Subtle interactivity for the cards
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jerric AI | The Future of AI Automation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#87bfbc",
+                    "surface-variant": "#353534",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-fixed": "#00201f",
+                    "on-secondary-fixed": "#00201f",
+                    "on-secondary": "#003735",
+                    "background": "#131313",
+                    "on-error": "#690005",
+                    "surface-dim": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-secondary-fixed-variant": "#104f4d",
+                    "secondary-fixed-dim": "#98d1ce",
+                    "secondary-fixed": "#b4edea",
+                    "surface-container-high": "#2a2a2a",
+                    "outline-variant": "#3d4948",
+                    "on-tertiary-fixed-variant": "#2a4c4c",
+                    "on-primary-container": "#00302e",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#72d7d3",
+                    "on-background": "#e5e2e1",
+                    "tertiary-fixed-dim": "#a9cdcc",
+                    "primary-container": "#34a09c",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary-container": "#749796",
+                    "on-surface-variant": "#bdc9c8",
+                    "on-tertiary": "#113635",
+                    "outline": "#879392",
+                    "surface-tint": "#72d7d3",
+                    "primary-fixed-dim": "#72d7d3",
+                    "on-primary": "#003736",
+                    "tertiary-fixed": "#c4eae8",
+                    "surface-bright": "#393939",
+                    "surface-container-highest": "#353534",
+                    "surface": "#131313",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#092f2f",
+                    "error-container": "#93000a",
+                    "secondary": "#98d1ce",
+                    "on-primary-fixed-variant": "#00504e",
+                    "surface-container": "#201f1f",
+                    "tertiary": "#a9cdcc",
+                    "secondary-container": "#104f4d",
+                    "on-tertiary-fixed": "#002020",
+                    "primary-fixed": "#8ff3ef",
+                    "on-surface": "#e5e2e1",
+                    "inverse-primary": "#006a67",
+                    "surface-container-low": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "base": "4px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Playfair Display"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-xl": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(26, 143, 140, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .editorial-grain::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #1a8f8c; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- Global Background Shader -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-30">
+
+</div>
+<!-- Navigation (TopNavBar Component) -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-margin-desktop py-md max-w-[1440px] mx-auto">
+<div class="text-headline-md font-headline-md text-primary tracking-tight">Jerric AI</div>
+<div class="hidden md:flex items-center space-x-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="services.html">Services</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md font-label-md" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="youtube.html">YouTube</a>
+</div>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95">
+                Consultation
+            </button>
+</div>
+</nav>
+<main class="relative z-10 pt-xl">
+<!-- Featured Hero Section -->
+<section class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="grid lg:grid-cols-2 gap-lg items-center">
+<div class="space-y-md order-2 lg:order-1">
+<div class="inline-flex items-center space-x-xs text-primary">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-xs py-base border border-primary/20 bg-primary/5">Featured Article</span>
+<span class="w-12 h-[1px] bg-primary/30"></span>
+</div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface leading-tight">
+                        The Future of <br/><span class="text-primary italic">AI Automation</span>
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                        In an era where efficiency is the new currency, we explore how autonomous agents are redefining the corporate landscape and what leaders must do to stay ahead of the technical curve.
+                    </p>
+<div class="pt-md flex items-center space-x-md">
+<button class="group flex items-center space-x-xs bg-primary text-on-primary px-lg py-sm font-label-md transition-all hover:shadow-[0_0_20px_rgba(114,215,211,0.3)]">
+<span>READ FULL ARTICLE</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center space-x-sm border-l border-white/10 pl-md">
+<div class="w-10 h-10 rounded-full border border-primary/20 bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior AI researcher with a minimalist gray background, captured with soft studio lighting. The person wears a modern black turtleneck, looking confident and intellectual. High-end editorial photography style consistent with a technical brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcKrZHORqWC9UCkfaSRhON1WY4OEgzhm-8H2MWDYSBzJb5pnH5Wg3paIerhFnV-LHDkLSMta8etJKHiMI5WcY0fYO6L9ctI1jHSLMtIOXCHNG32WF0xHG6GfaXCxvGYd6UsmbU4327FOViAQR25IMMwFO4zl-SHe7DJAAMsiYY_IadPAvzJaQZBPklBN1fXCq3zacRFpC8XMKseGhC_ho5c-lF9i7T2O77aVeosdUn7gBicH7XqGl8y4YG2Zrg7LJBxIoawsVBcGI"/>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface">By Dr. Julian Vance</p>
+<p class="text-xs text-on-surface-variant">Chief Automation Strategist</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 relative aspect-[4/3] rounded-xl overflow-hidden glass-panel editorial-grain">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-[1.1] hover:scale-105 transition-transform duration-700" data-alt="A sophisticated digital visualization of complex neural network connections and circuit board patterns intertwined with organic liquid textures. The color palette is dominated by deep teals, blacks, and glowing cyan highlights. This technical abstract art feels premium, intellectual, and futuristic, perfectly matching the Jerric AI brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0HLkC80qC2iiJWOob-qLZVfYxQ9KC9wNYX7rxCfhXZKWwIERCnd6U8WWj_5vqRgM6NAx_Ua5DG5wwWcOHkfuzOGNt3SvR1Wk92jiDoby2vpAIsiiJjeY1RlMxkJc2SazpeLLCogSEEELoLRLq081yrw_yPScbTouWVAX1r67j_MS9Ck6EE9HQPzGtyY7sMO8So-CFFLxf8ZJcRFLNFrpXh_7CI1HkpjHzgCKRzJXxuhshM_wG8huDztL9VDW_uoCy0_byTC1RelQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+</section>
+<!-- Category Grid (Bento Style) -->
+<section class="px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<div class="mb-lg">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Core Disciplines</h2>
+<div class="w-16 h-1 bg-primary mt-xs"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- AI Strategy -->
+<div class="glass-panel p-lg rounded-xl group hover:border-primary/40 transition-all cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary uppercase mb-base block">Strategy</span>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-base">AI Strategy</h3>
+<p class="text-on-surface-variant text-body-md mt-sm">Enterprise-grade roadmaps for implementing generative models at scale.</p>
+<div class="mt-lg h-[1px] w-full bg-white/10 group-hover:bg-primary/30 transition-colors"></div>
+</div>
+<!-- Automation Workflows -->
+<div class="glass-panel p-lg rounded-xl group hover:border-primary/40 transition-all cursor-pointer relative overflow-hidden bg-primary/5">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary uppercase mb-base block">Implementation</span>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-base">Automation Workflows</h3>
+<p class="text-on-surface-variant text-body-md mt-sm">Building resilient pipes between LLMs and legacy enterprise software.</p>
+<div class="mt-lg h-[1px] w-full bg-white/10 group-hover:bg-primary/30 transition-colors"></div>
+</div>
+<!-- Tool Reviews -->
+<div class="glass-panel p-lg rounded-xl group hover:border-primary/40 transition-all cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary uppercase mb-base block">Critical Analysis</span>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-base">Tool Reviews</h3>
+<p class="text-on-surface-variant text-body-md mt-sm">Unbiased, technical deep-dives into the latest AI development stacks.</p>
+<div class="mt-lg h-[1px] w-full bg-white/10 group-hover:bg-primary/30 transition-colors"></div>
+</div>
+</div>
+</section>
+<!-- Recent Articles (Asymmetric List) -->
+<section class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-lg">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Technical Insights</h2>
+<p class="text-on-surface-variant mt-base">Recent thoughts from the engineering frontline.</p>
+</div>
+<button class="text-primary font-label-sm text-label-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-8 mt-md md:mt-0">View All Posts</button>
+</div>
+<div class="space-y-gutter">
+<!-- Article 1 -->
+<article class="group flex flex-col md:flex-row gap-lg items-center border-b border-white/5 pb-lg">
+<div class="w-full md:w-1/3 aspect-[16/9] overflow-hidden rounded-lg glass-panel">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A macro photography shot of a high-tech processor chip glowing with faint teal light, surrounded by intricate gold circuitry traces. The background is a dark, soft-focus industrial setting. The image communicates high-end performance, precision, and the technical depth of AI hardware. Minimalist and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB8Yxp6bQGdlLMQP5Y22nZj5Zgou5scjL6SbVmLc29uN8OjsyEoFfftLDrXj-z7Q7pV7UuQhaluhroq1hf0G3QSNqRdGbRETd2PQ1Bvcuq9nZ35WhJL0Ooh0TAmKZ05ZN0LIFtSKqlap8-vlh-9c5PSSLbQiQ8DU3vleTo3Na1VLZbUkNZSt_JUvGE1CAXkJCPHRNeCUU5yUpiSwNUZlr8SDj2EBFX4lo0-sH2aYXGf-WoP3ZoAo7WKSCxb2zwWhfOM3yuMO7J2Dc"/>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex items-center space-x-md text-label-sm font-label-sm text-on-surface-variant">
+<span>04 NOV 2024</span>
+<span class="w-1 h-1 rounded-full bg-primary/40"></span>
+<span class="text-primary uppercase">Tool Review</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">Prompt Injection: Securing the New Attack Surface</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">As LLMs become the gateway to enterprise databases, the security implications of prompt injection become paramount. We dissect the top five defensive patterns.</p>
+<a class="inline-block text-label-md font-label-md text-primary pt-base border-b border-transparent hover:border-primary transition-all" href="#">READ MORE</a>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="group flex flex-col md:flex-row gap-lg items-center border-b border-white/5 pb-lg">
+<div class="w-full md:w-1/3 aspect-[16/9] overflow-hidden rounded-lg glass-panel">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract digital visualization of streaming data points forming a 3D architectural structure. The light is focused in the center with a gradient of dark teal to midnight black towards the edges. The scene represents structured information and the beauty of data architecture. Clean, editorial, and authoritative aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-36Dju5bmxQVmdsyFIGjqsDLoiT8K8jqc4r83fZC_sbO_NwmV6Vy18XwEkLHb1vRRC1AO47fg1aoqbHEUOlT3LK1LDbMGCRWvDqhp0Xq6panvnRmAucwsN7BXWX1bsSjou9HLlKDH3QcYeLiSTXLXuBDlHUmtLorCnEWavQK3v3h8kOzVpCoxkv69F6i5H4dfiDLCfl4uWpp42b7ZyShCivU9pm-QnSJTJb4S0WX5aCnPlLVmFsGvuxYTvGbkA2zz4fpgYe4Sq4A"/>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex items-center space-x-md text-label-sm font-label-sm text-on-surface-variant">
+<span>28 OCT 2024</span>
+<span class="w-1 h-1 rounded-full bg-primary/40"></span>
+<span class="text-primary uppercase">AI Strategy</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">The Cost of Intelligence: Optimizing LLM Spend</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Scaling AI isn't just a technical challenge; it's a fiscal one. Learn how to implement token caching and model routing to slash your API bills by 40%.</p>
+<a class="inline-block text-label-md font-label-md text-primary pt-base border-b border-transparent hover:border-primary transition-all" href="#">READ MORE</a>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="group flex flex-col md:flex-row gap-lg items-center border-b border-white/5 pb-lg">
+<div class="w-full md:w-1/3 aspect-[16/9] overflow-hidden rounded-lg glass-panel">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist top-down view of a designer's desk with a high-end laptop, a digital tablet displaying code snippets, and a single green succulent. The lighting is cold and clinical, suggesting a high-focus technical workspace. The color palette emphasizes deep greens and metallic silvers. Professional, clean, and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeElPmBDS5_7JZIysfwnY7bXRxE2qC84jlzq6rTgqpZ16wyoAPZrb0IewwmOKW3fb6XUFO-wcXNFnCFGRK562G2iET8gDm5qjm3J0nBUsr4pwaAu8nVtRx1zcKbD6sB8ynEgqN7Cje0hVeOnUU1Z9DDb0pzITiAoZQC6vHdT7dzkYEcmwX5U6szgswPfQRL69xoOLjt9WcQylidl-TQMUcgQMhWQ_Deyw2roM2S--ZFkX9xWimUZOooDicDzHvr732coQxWJP2fg"/>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex items-center space-x-md text-label-sm font-label-sm text-on-surface-variant">
+<span>15 OCT 2024</span>
+<span class="w-1 h-1 rounded-full bg-primary/40"></span>
+<span class="text-primary uppercase">YouTube</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">Building Your First AI Agent with Python &amp; CrewAI</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">A step-by-step guide to orchestrating a multi-agent team. We take you from zero to a fully functional research swarm in under twenty minutes.</p>
+<a class="inline-block text-label-md font-label-md text-primary pt-base border-b border-transparent hover:border-primary transition-all" href="#">WATCH VIDEO</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Newsletter Section (The Pulse) -->
+<section class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="relative rounded-2xl glass-panel p-lg md:p-xl overflow-hidden editorial-grain">
+<!-- Background visual element -->
+<div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary/10 blur-[100px]"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">The Jerric AI Pulse</h2>
+<p class="text-body-lg text-on-surface-variant mt-sm">Weekly technical briefings on the automation economy. No hype. No filler. Just engineering truth.</p>
+<form class="mt-lg flex flex-col sm:flex-row gap-md">
+<input class="flex-1 bg-surface-container-low border-0 border-b-2 border-primary/20 text-on-surface py-sm px-base focus:ring-0 focus:border-primary transition-all placeholder:text-on-surface-variant/40" placeholder="professional@company.com" type="email"/>
+<button class="bg-primary text-on-primary font-label-md px-lg py-sm transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-primary/20" type="submit">
+                            SUBSCRIBE
+                        </button>
+</form>
+<p class="text-xs text-on-surface-variant/60 mt-md font-label-sm">Join 12,000+ engineers and AI strategists.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="mt-xl bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<div class="flex flex-col items-center md:items-start space-y-base">
+<div class="text-headline-md font-headline-md text-primary">Jerric AI</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2024 Jerric AI. All rights reserved.</p>
+</div>
+<div class="flex items-center space-x-md mt-lg md:mt-0">
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="services.html">Services</a>
+<a class="text-primary text-label-sm font-label-sm transition-colors" href="blog.html">Blog</a>
+<a class="text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors" href="youtube.html">YouTube</a>
+</div>
+<div class="flex items-center space-x-sm mt-lg md:mt-0">
+<a class="w-10 h-10 flex items-center justify-center rounded-full glass-panel hover:text-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full glass-panel hover:text-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for hover effects
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple scroll reveal
+        const revealOnScroll = () => {
+            const articles = document.querySelectorAll('article');
+            articles.forEach(article => {
+                const top = article.getBoundingClientRect().top;
+                if(top < window.innerHeight - 100) {
+                    article.classList.add('opacity-100', 'translate-y-0');
+                    article.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial state for reveal
+        document.querySelectorAll('article').forEach(a => a.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700'));
+        revealOnScroll();
+    </script>
+</body></html>
