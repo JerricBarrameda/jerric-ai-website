@@ -70,23 +70,51 @@ tailwind.config = {
 <link rel="stylesheet" href="animations.css"/>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
-<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-sm shadow-primary/5">
-<div class="flex justify-between items-center px-margin-desktop py-md max-w-[1440px] mx-auto">
-<a class="text-headline-md font-headline-md text-primary tracking-tight" href="index.html">Jerric AI</a>
-<div class="hidden md:flex items-center space-x-md">
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="index.html">Home</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="services.html">Services</a>
-<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md font-label-md" href="blog.html">Blog</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="youtube.html">YouTube</a>
-</div>
-<a class="bg-primary text-on-primary px-md py-xs rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95 inline-block" href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer">Consultation</a>
-</div>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden max-w-full selection:bg-primary selection:text-on-primary">
+<header class="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between p-4 sm:p-5">
+<a href="index.html" class="flex items-center gap-2">
+<svg width="26" height="26" viewBox="0 0 256 256" fill="#ffffff"><path d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z"></path></svg>
+<span class="text-white text-2xl italic" style="font-family:'Playfair Display', serif;">Jerric AI</span>
+</a>
+<nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-2 py-2 items-center gap-1">
+<a href="index.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">About</a>
+<a href="services.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">Services</a>
+<a href="blog.html" class="text-white px-4 py-1.5 rounded-full text-sm font-medium">Blog</a>
+<a href="youtube.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">YouTube</a>
 </nav>
-<main class="relative z-10 pt-xl">
+<a href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer" class="hidden md:block bg-[#72d7d3] text-[#003736] text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-white transition-colors">Book a Call</a>
+<button id="jerric-nav-toggle" aria-label="Open menu" class="md:hidden text-white p-2">
+<svg id="jerric-nav-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+<svg id="jerric-nav-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg>
+</button>
+<div id="jerric-nav-mobile" class="hidden md:hidden absolute top-full left-4 right-4 mt-2 bg-black/90 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex flex-col gap-1">
+<a href="index.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">About</a>
+<a href="services.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">Services</a>
+<a href="blog.html" class="bg-white/10 text-white px-4 py-2.5 rounded-lg text-sm font-medium">Blog</a>
+<a href="youtube.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">YouTube</a>
+<a href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer" class="bg-[#72d7d3] text-[#003736] text-sm font-semibold px-4 py-2.5 rounded-lg text-center mt-1">Book a Call</a>
+</div>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById('jerric-nav-toggle');
+  var menu = document.getElementById('jerric-nav-mobile');
+  var iconOpen = document.getElementById('jerric-nav-icon-open');
+  var iconClose = document.getElementById('jerric-nav-icon-close');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+  });
+})();
+</script>
+<main class="relative z-10 pt-24">
 
 <!-- Article Header -->
-<header class="px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<header class="px-margin-mobile md:px-margin-desktop py-xl max-w-[1440px] mx-auto">
 <div class="max-w-3xl mx-auto">
 <a href="blog.html" class="inline-flex items-center gap-xs text-on-surface-variant hover:text-primary text-label-sm font-label-sm transition-colors mb-lg">
 <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Blog
@@ -96,7 +124,7 @@ tailwind.config = {
 <span class="text-on-surface-variant text-label-sm font-label-sm">20 JUN 2026</span>
 <span class="text-on-surface-variant text-label-sm font-label-sm">· 5 min read</span>
 </div>
-<h1 class="text-headline-xl font-headline-xl text-on-surface leading-tight mb-md reveal">Prompt Injection: Securing the New Attack Surface in 2026</h1>
+<h1 class="text-headline-xl-mobile md:text-headline-xl font-headline-xl text-on-surface leading-tight mb-md reveal">Prompt Injection: Securing the New Attack Surface in 2026</h1>
 <div class="flex items-center gap-sm pt-md border-t border-white/5">
 <div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-sm">person</span>
@@ -108,12 +136,12 @@ tailwind.config = {
 </header>
 
 <!-- Divider -->
-<div class="px-margin-desktop max-w-3xl mx-auto">
+<div class="px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
 <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-xl"></div>
 </div>
 
 <!-- Article Body -->
-<article class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<article class="px-margin-mobile md:px-margin-desktop pb-xl max-w-3xl mx-auto">
 <p class="prose-lead reveal">Prompt injection is still the number one LLM security risk in 2026, sitting at the top of the OWASP Gen AI list as LLM01. Research shows about 73% of production AI deployments are vulnerable to it, and OpenAI has called it a frontier security challenge with no clean fix. If you connect a language model to your CRM, your inbox, or your database, this is the threat you have to design around.</p>
 
 <!-- Featured image — replace with <img src="..." alt="..." class="w-full rounded-lg"> when ready -->
@@ -159,7 +187,7 @@ tailwind.config = {
 
 
 <!-- CTA -->
-<section class="px-margin-desktop pb-xl max-w-3xl mx-auto">
+<section class="px-margin-mobile md:px-margin-desktop pb-xl max-w-3xl mx-auto">
 <div class="glass-panel rounded-xl p-lg text-center reveal">
 <h3 class="text-headline-md font-headline-md text-on-surface mb-sm">Want systems like this for your business?</h3>
 <p class="text-on-surface-variant text-body-md mb-md">Book a discovery call and let's build your first AI automation together.</p>
@@ -171,7 +199,7 @@ Book a Consultation <span class="material-symbols-outlined">arrow_forward</span>
 
 </main>
 <footer class="mt-xl bg-surface-container-lowest border-t border-white/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-lg max-w-[1440px] mx-auto">
 <div class="flex flex-col items-center md:items-start space-y-base">
 <div class="text-headline-md font-headline-md text-primary">Jerric AI</div>
 <p class="text-label-sm font-label-sm text-on-surface-variant">© 2026 Jerric AI. All rights reserved.</p>

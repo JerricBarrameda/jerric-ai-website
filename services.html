@@ -103,10 +103,12 @@
       }
     </script>
 <style>
-        body {
+        html, body {
             background-color: #131313;
             color: #e5e2e1;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100%;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -151,35 +153,59 @@
 </head>
 <body class="font-body-md text-body-md overflow-x-hidden">
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md shadow-sm shadow-teal-accent/5 border-b border-outline-variant/20 h-20">
-<div class="max-w-max-width mx-auto px-margin-desktop flex justify-between items-center h-full">
-<div class="font-headline-md text-headline-md font-bold text-teal-accent dark:text-primary">
-            Jerric AI
-        </div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="index.html">Home</a>
-<a class="font-label-md text-label-md text-teal-accent dark:text-primary font-bold border-b-2 border-teal-accent" href="services.html">Services</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="blog.html">Blog</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-teal-accent transition-colors duration-200" href="youtube.html">YouTube</a>
+<header class="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between p-4 sm:p-5">
+<a href="index.html" class="flex items-center gap-2">
+<svg width="26" height="26" viewBox="0 0 256 256" fill="#ffffff"><path d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z"></path></svg>
+<span class="text-white text-2xl italic" style="font-family:'Playfair Display', serif;">Jerric AI</span>
+</a>
+<nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-2 py-2 items-center gap-1">
+<a href="index.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">About</a>
+<a href="services.html" class="text-white px-4 py-1.5 rounded-full text-sm font-medium">Services</a>
+<a href="blog.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">Blog</a>
+<a href="youtube.html" class="text-white/80 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium">YouTube</a>
 </nav>
-<a class="bg-teal-accent text-white px-6 py-2.5 rounded-lg font-label-md hover:shadow-[0_0_15px_rgba(26,143,140,0.5)] transition-all active:scale-95 inline-block" href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer">
-            Consultation
-        </a>
+<a href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer" class="hidden md:block bg-[#72d7d3] text-[#003736] text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-white transition-colors">Book a Call</a>
+<button id="jerric-nav-toggle" aria-label="Open menu" class="md:hidden text-white p-2">
+<svg id="jerric-nav-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+<svg id="jerric-nav-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg>
+</button>
+<div id="jerric-nav-mobile" class="hidden md:hidden absolute top-full left-4 right-4 mt-2 bg-black/90 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex flex-col gap-1">
+<a href="index.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">About</a>
+<a href="services.html" class="bg-white/10 text-white px-4 py-2.5 rounded-lg text-sm font-medium">Services</a>
+<a href="blog.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">Blog</a>
+<a href="youtube.html" class="text-white/80 hover:bg-white/10 hover:text-white transition-colors px-4 py-2.5 rounded-lg text-sm font-medium">YouTube</a>
+<a href="https://calendar.app.google/EJRJKYmPR8bZQxyt6" target="_blank" rel="noopener noreferrer" class="bg-[#72d7d3] text-[#003736] text-sm font-semibold px-4 py-2.5 rounded-lg text-center mt-1">Book a Call</a>
 </div>
 </header>
-<main class="pt-32">
+<script>
+(function(){
+  var btn = document.getElementById('jerric-nav-toggle');
+  var menu = document.getElementById('jerric-nav-mobile');
+  var iconOpen = document.getElementById('jerric-nav-icon-open');
+  var iconClose = document.getElementById('jerric-nav-icon-close');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+  });
+})();
+</script>
+<main class="pt-24">
 <!-- Hero Section -->
-<section class="max-w-max-width mx-auto px-margin-desktop mb-24 relative text-center">
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-accent/5 rounded-full blur-[120px] -z-10"></div>
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-24 relative text-center">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] max-w-[90vw] max-h-[90vw] bg-teal-accent/5 rounded-full blur-[120px] -z-10"></div>
 <div class="max-w-4xl mx-auto">
 <span class="font-label-sm text-label-sm text-gold-detail tracking-widest mb-4 block uppercase">Our Expertise</span>
-<h1 class="font-headline-xl text-headline-xl mb-6 text-on-surface">Smart Solutions for <span class="text-teal-accent glow-text">Busy Businesses</span></h1>
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-6 text-on-surface">Smart Solutions for <span class="text-teal-accent glow-text">Busy Businesses</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">Whether you need a fully automated workflow or hands-on assistant support — we've got you covered with precision-engineered AI systems.</p>
 </div>
 </section>
 
 <!-- Video showcase with scroll-driven 3D tilt -->
-<section class="max-w-max-width mx-auto px-margin-desktop mb-32 overflow-hidden">
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-32 overflow-hidden">
   <div class="text-center mb-8">
     <span class="font-label-sm text-label-sm text-on-surface-variant tracking-widest uppercase">Live Systems. Real Results.</span>
   </div>
@@ -194,14 +220,14 @@
 </section>
 
 <!-- Featured Service Section -->
-<section class="max-w-max-width mx-auto px-margin-desktop mb-32">
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-32">
 <div class="glass-card rounded-2xl p-8 lg:p-12 overflow-hidden relative">
 <div class="absolute top-0 right-0 p-4">
 <span class="bg-gold-detail/20 text-gold-detail px-4 py-1.5 rounded-full text-label-sm font-bold flex items-center gap-2">
 <span class="material-symbols-outlined text-sm">star</span> FEATURED SERVICE
                 </span>
 </div>
-<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div>
 <div class="w-14 h-14 bg-teal-accent/10 rounded-xl flex items-center justify-center mb-6 border border-teal-accent/20">
 <span class="material-symbols-outlined text-teal-accent text-3xl">auto_fix_high</span>
@@ -264,7 +290,7 @@
 </div>
 </section>
 <!-- Main Categories Grid -->
-<section class="max-w-max-width mx-auto px-margin-desktop mb-32">
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-32">
 <h2 class="font-headline-md text-headline-md mb-12 text-on-surface">Comprehensive AI Services</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Email Sorter -->
@@ -337,8 +363,8 @@
 </section>
 <!-- Workflow Section -->
 <section class="bg-surface-container-low py-32 mb-32 overflow-hidden">
-<div class="max-w-max-width mx-auto px-margin-desktop">
-<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div>
 <h2 class="font-headline-lg text-headline-lg mb-8 text-on-surface">The 11-Day <br/><span class="text-teal-accent">Build Timeline</span></h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-12">
@@ -399,7 +425,7 @@
 </div>
 </section>
 <!-- CTA Section -->
-<section class="max-w-max-width mx-auto px-margin-desktop mb-32 text-center">
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-32 text-center">
 <div class="bg-gradient-to-br from-teal-accent to-deep-navy rounded-2xl p-16 relative overflow-hidden group">
 <div class="relative z-10">
 <h2 class="font-headline-lg text-headline-lg text-white mb-6">Ready to Automate Your Success?</h2>
@@ -414,7 +440,7 @@
 </main>
 <!-- Footer -->
 <footer class="w-full mt-auto bg-surface-container-lowest dark:bg-surface-container-lowest bg-surface-dim border-t border-outline-variant/10">
-<div class="max-w-max-width mx-auto px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter">
 <div class="flex flex-col gap-4">
 <div class="font-headline-sm text-headline-sm font-bold text-surface-cream">Jerric AI</div>
 <p class="font-body-md text-body-md text-on-surface-variant">© 2024 Jerric AI. Precision automation for the generative era.</p>
