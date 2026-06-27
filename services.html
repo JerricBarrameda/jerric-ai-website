@@ -4,104 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Services | Jerric AI - Smart AI Solutions</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "secondary": "#98d1ce",
-                    "primary-fixed": "#8ff3ef",
-                    "outline-variant": "#3d4948",
-                    "tertiary-fixed": "#c4eae8",
-                    "surface-container": "#201f1f",
-                    "on-error-container": "#ffdad6",
-                    "surface-container-highest": "#353534",
-                    "error": "#ffb4ab",
-                    "on-secondary": "#003735",
-                    "surface-dim": "#131313",
-                    "secondary-fixed-dim": "#98d1ce",
-                    "surface-container-low": "#1c1b1b",
-                    "teal-accent": "#72d7d3",
-                    "on-primary-container": "#00302e",
-                    "surface-bright": "#393939",
-                    "tertiary-fixed-dim": "#a9cdcc",
-                    "on-surface-variant": "#bdc9c8",
-                    "primary": "#72d7d3",
-                    "gold-detail": "#a9cdcc",
-                    "on-secondary-container": "#87bfbc",
-                    "primary-fixed-dim": "#72d7d3",
-                    "on-tertiary-fixed": "#002020",
-                    "on-tertiary": "#113635",
-                    "inverse-surface": "#e5e2e1",
-                    "on-primary": "#003736",
-                    "surface-variant": "#353534",
-                    "surface-container-high": "#2a2a2a",
-                    "on-tertiary-container": "#092f2f",
-                    "surface-cream": "#e5e2e1",
-                    "deep-navy": "#003736",
-                    "on-primary-fixed-variant": "#00504e",
-                    "on-tertiary-fixed-variant": "#2a4c4c",
-                    "background": "#131313",
-                    "on-surface": "#e5e2e1",
-                    "tertiary-container": "#749796",
-                    "on-primary-fixed": "#00201f",
-                    "on-background": "#e5e2e1",
-                    "on-error": "#690005",
-                    "tertiary": "#a9cdcc",
-                    "outline": "#879392",
-                    "inverse-on-surface": "#313030",
-                    "secondary-container": "#104f4d",
-                    "inverse-primary": "#006a67",
-                    "secondary-fixed": "#b4edea",
-                    "on-secondary-fixed": "#00201f",
-                    "primary-container": "#34a09c",
-                    "surface-tint": "#72d7d3",
-                    "on-secondary-fixed-variant": "#104f4d",
-                    "error-container": "#93000a",
-                    "surface-container-lowest": "#0e0e0e",
-                    "surface": "#131313"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "margin-desktop": "80px",
-                    "base": "8px",
-                    "max-width": "1280px",
-                    "gutter": "24px",
-                    "margin-mobile": "20px"
-            },
-            "fontFamily": {
-                    "headline-xl": ["Playfair Display"],
-                    "body-lg": ["DM Sans"],
-                    "headline-xl-mobile": ["Playfair Display"],
-                    "label-md": ["DM Sans"],
-                    "label-sm": ["DM Sans"],
-                    "headline-lg": ["Playfair Display"],
-                    "headline-md": ["Playfair Display"],
-                    "body-md": ["DM Sans"]
-            },
-            "fontSize": {
-                    "headline-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "headline-xl-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
-                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}],
-                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
-            }
-          },
-        },
-      }
-    </script>
+<link rel="stylesheet" href="css/services.min.css"/>
 <style>
         html, body {
             background-color: #131313;
@@ -213,7 +120,7 @@
     <div id="services-video-inner"
       class="rounded-2xl overflow-hidden border border-teal-accent/20 shadow-[0_32px_80px_-16px_rgba(26,143,140,0.25)] relative"
       style="transform:rotateX(8deg);transform-origin:top center;">
-      <video class="w-full block" src="network-bg.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <video class="w-full block" id="services-bg-video" data-src="network-bg.mp4" muted loop playsinline preload="none"></video>
       <div class="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none"></div>
     </div>
   </div>
@@ -461,6 +368,21 @@
 </div>
 </footer>
 <script>
+    // Lazy-load the hero background video only when it's about to scroll into view
+    (function(){
+        var video = document.getElementById('services-bg-video');
+        if (!video) return;
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    video.src = video.dataset.src;
+                    video.play().catch(function(){});
+                    io.disconnect();
+                }
+            });
+        }, { rootMargin: '300px' });
+        io.observe(video);
+    })();
     // Subtle interactivity for the cards
     document.querySelectorAll('.glass-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
