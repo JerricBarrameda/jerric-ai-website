@@ -133,7 +133,7 @@ export default function Hero() {
           style={{ animationDelay: '0.7s' }}
         >
           <p className="text-sm text-white/80 leading-relaxed">
-            I build AI automations and Executive VA support so business owners can stop drowning in repetitive tasks.
+            I build systems so business owners can stop drowning in repetitive tasks and enjoy their time.
           </p>
         </div>
 
